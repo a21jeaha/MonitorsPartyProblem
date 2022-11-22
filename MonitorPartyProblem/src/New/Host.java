@@ -20,6 +20,8 @@ public class Host implements Runnable {
 
     @Override
     public void run() {
-        needFill();
+        while (true) {
+            needFill();
+        }
     }
 }

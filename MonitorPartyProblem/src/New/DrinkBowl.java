@@ -6,14 +6,12 @@ public class DrinkBowl {
     private boolean fillRequestSent;
     private boolean isHostReady;
     private Go go;
-    private MonitorObject monitorObject;
 
-    public DrinkBowl(Go go, MonitorObject monitorObject) {
+    public DrinkBowl(Go go) {
         drinksInBowl = 1;
         fillRequestSent = false;
         isHostReady = false;
         this.go = go;
-        this.monitorObject = monitorObject;
     }
 
     // host fills bowl
@@ -22,17 +20,22 @@ public class DrinkBowl {
             isHostReady = true;
             go.host(drinkFiller);
             fillRequestSent = false;
-            this.notifyAll();
+            synchronized (this) {
+                this.notifyAll();
+                drinksInBowl = drinkFiller;
+                isHostReady = false;
+            }
+
         } else {
-            // go.notify();
             go.guest();
         }
     }
 
     // guest takes a drink
     public int getDrink() {
+
         // does bowl need to be filled?
-        if (drinksInBowl <= 1 && fillRequestSent == false) {
+        if (drinksInBowl == 0 && fillRequestSent == false) {
             fillRequestSent = true;
             if (isHostReady == false) {
                 synchronized (go) {
@@ -55,6 +58,7 @@ public class DrinkBowl {
                 }
             }
         }
+
         drinksInBowl--;
         return 1;
     }

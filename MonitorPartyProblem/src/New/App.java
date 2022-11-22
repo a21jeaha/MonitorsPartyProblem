@@ -10,9 +10,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         Go go = new Go();
-        MonitorObject monitorObject = new MonitorObject();
 
-        DrinkBowl drinkBowl = new DrinkBowl(go, monitorObject);
+        DrinkBowl drinkBowl = new DrinkBowl(go);
 
         Host host = new Host(drinkBowl);
 
@@ -25,16 +24,16 @@ public class App {
         Thread thread1 = new Thread(host);
         Thread thread2 = new Thread(guest1);
         Thread thread3 = new Thread(guest2);
-        // Thread thread4 = new Thread(guest3);
-        // Thread thread5 = new Thread(guest4);
-        // Thread thread6 = new Thread(guest5);
+        Thread thread4 = new Thread(guest3);
+        Thread thread5 = new Thread(guest4);
+        Thread thread6 = new Thread(guest5);
 
         thread1.start();
         thread2.start();
         thread3.start();
-        // thread4.start();
-        // thread5.start();
-        // thread6.start();
+        thread4.start();
+        thread5.start();
+        thread6.start();
 
     }
 }
