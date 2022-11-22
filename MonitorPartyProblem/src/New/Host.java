@@ -13,15 +13,9 @@ public class Host implements Runnable {
     }
 
     public void needFill() {
-        // try {
-        // System.out.println(name + " is waiting to fill bowl");
-        // drinkBowl.wait();
-        // } catch (InterruptedException e) {
-        // e.printStackTrace();
-        // }
+
         drinkBowl.fillBowl(drinkFiller, true);
         System.out.println(name + " filled the drink bowl");
-
     }
 
     @Override

@@ -21,17 +21,11 @@ public class Guest implements Runnable {
     }
 
     private void getDrink() {
-
-        if ((drink = drinkBowl.getDrink()) == 1) {
+        drink = drinkBowl.getDrink();
+        if (drink == 1) {
             System.out.println(name + " got a drink");
         } else {
-            // try {
-            // drinkBowl.wait();
-            // drink++;
-            // System.out.println(name + " got a drink");
-            // } catch (InterruptedException e) {
-            // e.printStackTrace();
-            // }
+            System.out.println("Did not get a drink...");
         }
     }
 
@@ -41,7 +35,6 @@ public class Guest implements Runnable {
         try {
             Thread.sleep(randomNumber);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
