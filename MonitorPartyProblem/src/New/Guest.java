@@ -17,18 +17,18 @@ public class Guest implements Runnable {
         drink = 0;
         randomGenerator = new Random();
         randomUpperLimit = 2000;
-        randomNumber = randomGenerator.nextInt(randomUpperLimit);
+        randomNumber = randomGenerator.nextInt(randomUpperLimit) + 1000;
     }
 
+    // fills own drink
     private void getDrink() {
         drink = drinkBowl.getDrink();
         if (drink == 1) {
             System.out.println(name + " got a drink");
-        } else {
-            System.out.println("Did not get a drink...");
         }
     }
 
+    // spends random number of milliseconds mingeling
     private void mingle() {
         System.out.println(name + " is mingeling");
         // simulats mingeling
@@ -39,11 +39,13 @@ public class Guest implements Runnable {
         }
     }
 
+    // empties own cup *bottoms upp*
     private void drink() {
         System.out.println(name + " emptied drink");
         drink--;
     }
 
+    // The party activity \(*_*)/
     @Override
     public void run() {
         while (true) {

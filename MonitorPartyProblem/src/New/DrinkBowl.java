@@ -14,8 +14,8 @@ public class DrinkBowl {
         this.go = go;
     }
 
-    // host fills bowl
     public void fillBowl(int drinkFiller, Boolean isHost) {
+        // host fills bowl
         if (isHost == true) {
             isHostReady = true;
             go.host(drinkFiller);
@@ -27,6 +27,7 @@ public class DrinkBowl {
             }
 
         } else {
+            // guest wakes host
             go.guest();
         }
     }
@@ -46,6 +47,7 @@ public class DrinkBowl {
                     }
                 }
             }
+            // sends guest to host notifying method
             fillBowl(0, false);
         }
         // force guest to wait for the bowl to be refilled

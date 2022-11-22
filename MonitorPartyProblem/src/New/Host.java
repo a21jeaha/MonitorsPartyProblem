@@ -12,12 +12,13 @@ public class Host implements Runnable {
         drinkFiller = 3;
     }
 
+    // fills bowl
     public void needFill() {
-
         drinkBowl.fillBowl(drinkFiller, true);
         System.out.println(name + " filled the drink bowl");
     }
 
+    // Host is in a loop to fill bowl
     @Override
     public void run() {
         while (true) {
